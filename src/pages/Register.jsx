@@ -12,7 +12,7 @@ const Register = () => {
                     <div className="col-md-4 col-lg-4 col-sm-8 mx-auto">
                         <form>
                             <div class="form my-3">
-                                <label for="Name">Full Name</label>
+                                <label for="Name">User Name</label>
                                 <input
                                     type="email"
                                     class="form-control"

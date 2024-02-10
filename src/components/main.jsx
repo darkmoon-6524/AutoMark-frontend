@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
@@ -13,12 +14,20 @@ const Home = () => {
           />
           <div className="card-img-overlay d-flex align-items-center">
             <div className="container">
-              <h5 className="card-title fs-1 text fw-lighter">New Season Arrivals</h5>
-              <p className="card-text fs-5 d-none d-sm-block ">
-                This is a wider card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </p>
+              <h5 className="card-title fs-1 text fw-lighter">Welcome to our Attendance System</h5>
+              <div>
+                <h6>Key features</h6>
+                <ul>
+                  <li>Automated attendance tracking using face recognition</li><br></br>
+                  <li>User-friendly interface for both teachers and students</li><br></br>
+                  <li>Real-time attendance monitoring and reporting</li>
+                </ul>
+              </div>
+
+
+              <section id="get-started">
+                <Link to="/login" className="get-started-btn">Get Started</Link>
+              </section>
             </div>
           </div>
         </div>
