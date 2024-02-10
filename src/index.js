@@ -8,6 +8,7 @@ import store from './redux/store';
 
 
 import { Home,  AboutPage, ContactPage, Cart, Login, Register, Checkout, PageNotFound } from "./pages"
+import Dashboard from './pages/Dashboard';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -19,12 +20,10 @@ root.render(
         {/* <Route path="/product/:id" element={<Product />} /> */}
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
-        <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="*" element={<PageNotFound />} />
-        <Route path="/product/*" element={<PageNotFound />} />
       </Routes>
     </Provider>
   </BrowserRouter>

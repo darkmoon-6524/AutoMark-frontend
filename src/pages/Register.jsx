@@ -1,7 +1,29 @@
-import React from 'react'
-import { Footer, Navbar } from "../components";
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { Footer, Navbar } from "../components";
+
 const Register = () => {
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            const response = await axios.post("/api/register", { name, email, password });
+            localStorage.setItem("email", email);
+            // Handle successful registration response
+            console.log(response.data);
+        } catch (error) {
+            // Handle error
+            setError("Failed to register. Please try again.");
+            console.error("Registration error:", error);
+        }
+    };
+
     return (
         <>
             <Navbar />
@@ -10,14 +32,17 @@ const Register = () => {
                 <hr />
                 <div class="row my-4 h-100">
                     <div className="col-md-4 col-lg-4 col-sm-8 mx-auto">
-                        <form>
+                        <form onSubmit={handleSubmit}>
                             <div class="form my-3">
                                 <label for="Name">User Name</label>
                                 <input
-                                    type="email"
+                                    type="text"
                                     class="form-control"
                                     id="Name"
                                     placeholder="Enter Your Name"
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value)}
+                                    required
                                 />
                             </div>
                             <div class="form my-3">
@@ -27,6 +52,9 @@ const Register = () => {
                                     class="form-control"
                                     id="Email"
                                     placeholder="name@example.com"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    required
                                 />
                             </div>
                             <div class="form  my-3">
@@ -36,13 +64,17 @@ const Register = () => {
                                     class="form-control"
                                     id="Password"
                                     placeholder="Password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    required
                                 />
                             </div>
+                            {error && <p className="text-danger">{error}</p>}
                             <div className="my-3">
-                                <p>Already has an account? <Link to="/login" className="text-decoration-underline text-info">Login</Link> </p>
+                                <p>Already have an account? <Link to="/login" className="text-decoration-underline text-info">Login</Link> </p>
                             </div>
                             <div className="text-center">
-                                <button class="my-2 mx-auto btn btn-dark" type="submit" disabled>
+                                <button class="my-2 mx-auto btn btn-dark" type="submit">
                                     Register
                                 </button>
                             </div>
@@ -52,7 +84,7 @@ const Register = () => {
             </div>
             <Footer />
         </>
-    )
-}
+    );
+};
 
-export default Register
+export default Register;
