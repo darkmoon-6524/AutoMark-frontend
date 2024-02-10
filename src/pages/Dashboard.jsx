@@ -1,17 +1,30 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Footer, Navbar } from '../components';
 import axios from 'axios';
+import { server } from "../index.js";
 
 const Dashboard = () => {
     const [joinedClasses, setJoinedClasses] = useState([]);
     const [createdClasses, setCreatedClasses] = useState([]);
     const [joinClassCode, setJoinClassCode] = useState("");
     const [createClassroomName, setCreateClassroomName] = useState("");
-const email = localStorage.getitem('email');
+    const email = localStorage.getitem('email');
+
+    useEffect(async()=>{
+        
+        try {
+            const response = await axios.get(`${server}/dashboard`);
+    
+            setJoinedClasses(response.data.joinedClasses);
+            setCreatedClasses(response.data.createdClasses);
+        } catch (error) {
+            console.error("Get dashboard error", error);
+        }
+    })
 
     const handleJoinClassroom = async () => {
         try {
-            const response = await axios.post("/api/joinClassroom", { code: joinClassCode, email:email });
+            const response = await axios.post(`${server}/classroom/joinClassroom`, { code: joinClassCode, email:email });
             // Handle successful join response
             console.log(response.data);
             // Update joined classes state
@@ -24,7 +37,7 @@ const email = localStorage.getitem('email');
 
     const handleCreateClassroom = async () => {
         try {
-            const response = await axios.post("/api/createClassroom", { name: createClassroomName, email:email });
+            const response = await axios.post(`${server}/classroom/createClassroom`, { name: createClassroomName, email:email });
             // Handle successful creation response
             console.log(response.data);
             // Update created classes state

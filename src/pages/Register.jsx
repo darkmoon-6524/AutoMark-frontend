@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { Footer, Navbar } from "../components";
+import { server } from "../index.js";
 
 const Register = () => {
     const [name, setName] = useState("");
@@ -13,7 +14,7 @@ const Register = () => {
         e.preventDefault();
 
         try {
-            const response = await axios.post("/api/register", { name, email, password });
+            const response = await axios.post(`${server}/auth/register`, { name, email, password });
             localStorage.setItem("email", email);
             // Handle successful registration response
             console.log(response.data);

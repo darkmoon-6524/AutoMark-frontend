@@ -14,11 +14,17 @@ const Classroom = () => {
         present: false
     }])
 
+    const handleStartAttendance = async()=>{
+        await axios.get(`${server}/classroom/autoMark`);
+
+    }
+
     return (
         <>
             <Navbar />
             <div className="container my-3 py-3">
                 <h1 className="text-center">Classroom: {className}, Code: {classId}</h1>
+                <button onClick={handleStartAttendance}>Start Attendance</button>
                 <br /><br />
                 <hr />
                 <br /><br />
@@ -37,6 +43,7 @@ const Classroom = () => {
                     </div>
 
                     <button type="submit">Save</button>
+                    
                 </div>
             </div>
             <Footer />

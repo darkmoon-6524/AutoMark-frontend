@@ -10,6 +10,8 @@ import store from './redux/store';
 import { Home,  AboutPage, ContactPage, Login, Register, PageNotFound, Classroom } from "./pages"
 import Dashboard from './pages/Dashboard';
 
+export const server = "http://localhost:3000/api"
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
