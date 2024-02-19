@@ -10,7 +10,7 @@ import store from './redux/store';
 import { Home,  AboutPage, ContactPage, Login, Register, PageNotFound, Classroom } from "./pages"
 import Dashboard from './pages/Dashboard';
 
-export const server = "http://localhost:3000/api"
+export const server = "http://localhost:3001/api"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -18,8 +18,6 @@ root.render(
     <Provider store={store}>
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* <Route path="/product" element={<Products />} /> */}
-        {/* <Route path="/product/:id" element={<Product />} /> */}
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/login" element={<Login />} />

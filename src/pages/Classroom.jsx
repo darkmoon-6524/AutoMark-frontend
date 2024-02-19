@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Footer, Navbar } from '../components'
 import { Link, useParams } from 'react-router-dom'
+import axios from 'axios'
+import {server} from '../index.js'
 
 const Classroom = () => {
     const { classId } = useParams();
