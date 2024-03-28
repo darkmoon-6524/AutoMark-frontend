@@ -71,6 +71,8 @@ const Student = () => {
         });
       }
 
+      localStorage.setItem("name", email);
+
       console.log("Registeration successful:");
     } catch (error) {
       console.error("Registration error:", error);
