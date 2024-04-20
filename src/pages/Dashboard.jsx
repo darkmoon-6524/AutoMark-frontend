@@ -8,8 +8,8 @@ const Dashboard = () => {
   const [createdClasses, setCreatedClasses] = useState([]);
   const [joinClassCode, setJoinClassCode] = useState("");
   const [createClassroomName, setCreateClassroomName] = useState("");
-//   const username = localStorage.getitem("username");
-//   const userType = localStorage.getitem("userType");
+  const username = localStorage.getitem("username");
+  const userType = localStorage.getitem("userType");
 
   useEffect(async () => {
     try {

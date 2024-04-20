@@ -15,6 +15,7 @@ const Login = () => {
     try {
       const response = await axios.post(`${server}/auth/login`, { email, password });
       localStorage.setItem("email", email);
+      localStorage.setItem("userType", response.data.userType);
       // Handle successful login response
       console.log(response.data);
     } catch (error) {
